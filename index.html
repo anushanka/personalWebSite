@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ANUSH.WORLD · Digital Architect</title>
+<meta name="description" content="Anush — digital architect working at the intersection of design and code." />
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        surface: "#121222", "inverse-primary": "#732ee4", "surface-tint": "#d2bbff",
+        "outline-variant": "#4a4455", "surface-container-high": "#29283a", "primary-container": "#7c3aed",
+        "inverse-surface": "#e3e0f8", "on-tertiary-container": "#ffdde7", "surface-dim": "#121222",
+        "inverse-on-surface": "#2f2f40", "on-secondary-container": "#00424e", "on-tertiary-fixed": "#3e0022",
+        "on-tertiary-fixed-variant": "#8c0053", "on-primary-fixed": "#25005a", "on-primary": "#3f008e",
+        "on-secondary-fixed": "#001f26", "primary-fixed-dim": "#d2bbff", "error-container": "#93000a",
+        "on-surface-variant": "#ccc3d8", "secondary-fixed": "#acedff", "tertiary-container": "#bf2076",
+        "surface-container-low": "#1a1a2b", "on-secondary-fixed-variant": "#004e5c", primary: "#d2bbff",
+        "surface-container": "#1e1e2f", "on-surface": "#e3e0f8", "primary-fixed": "#eaddff",
+        "surface-bright": "#38374a", "on-primary-fixed-variant": "#5a00c6", "on-error-container": "#ffdad6",
+        "on-primary-container": "#ede0ff", background: "#121222", tertiary: "#ffb0cd", outline: "#958da1",
+        "on-tertiary": "#640039", "surface-container-highest": "#333345", "on-error": "#690005",
+        "surface-variant": "#333345", "surface-container-lowest": "#0c0c1d", "on-background": "#e3e0f8",
+        "tertiary-fixed-dim": "#ffb0cd", error: "#ffb4ab", "secondary-container": "#03b5d3",
+        "on-secondary": "#003640", secondary: "#4cd7f6", "secondary-fixed-dim": "#4cd7f6", "tertiary-fixed": "#ffd9e4"
+      },
+      borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+      spacing: { "margin-mobile": "20px", "container-max": "1440px", "section-gap": "120px", base: "8px", "margin-desktop": "80px", gutter: "24px" },
+      fontFamily: { "headline-sm": ["Sora"], "body-lg": ["Inter"], "display-lg-mobile": ["Sora"], "headline-md": ["Sora"], "display-lg": ["Sora"], "body-md": ["Inter"], "label-mono": ["JetBrains Mono"] },
+      fontSize: {
+        "headline-sm": ["24px", { lineHeight: "1.4", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+        "display-lg-mobile": ["40px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "800" }],
+        "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+        "display-lg": ["72px", { lineHeight: "1.1", letterSpacing: "-0.04em", fontWeight: "800" }],
+        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+        "label-mono": ["14px", { lineHeight: "1.5", letterSpacing: "0.05em", fontWeight: "500" }]
+      }
+    }
+  }
+};
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%237c3aed'/%3E%3Cstop offset='50%25' stop-color='%234cd7f6'/%3E%3Cstop offset='100%25' stop-color='%23ffb0cd'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230c0c1d'/%3E%3Ccircle cx='32' cy='32' r='26' fill='url(%23g)' opacity='0.9'/%3E%3Ctext x='32' y='42' font-family='Sora, sans-serif' font-weight='800' font-size='30' text-anchor='middle' fill='%230c0c1d'%3EA%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
+
+<style>
+  body { background-color: #121222; overflow-x: hidden; color: #e3e0f8; }
+  .glass-panel { background: rgba(255,255,255,0.03); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.1); }
+  .neon-text-magenta { text-shadow: 0 0 10px rgba(255,176,205,0.5), 0 0 20px rgba(255,176,205,0.3), 0 0 30px rgba(255,176,205,0.1); }
+  .cyan-pulse { animation: pulse-cyan 3s infinite; }
+  @keyframes pulse-cyan { 0%,100% { border-color: rgba(76,215,246,0.4); box-shadow: 0 0 5px rgba(76,215,246,0.2); } 50% { border-color: rgba(76,215,246,1); box-shadow: 0 0 20px rgba(76,215,246,0.5); } }
+  .float-anim { animation: floating 6s ease-in-out infinite; }
+  @keyframes floating { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+  .nav-link.active { color: #4cd7f6; }
+  .side-link.active { color: #4cd7f6; font-weight: 700; background: rgba(76,215,246,0.1); border-right: 4px solid #4cd7f6; }
+  #mobile-menu { transform: translateY(-12px); opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+  #mobile-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .avatar-monogram { background: conic-gradient(from 220deg, #7c3aed, #4cd7f6, #ffb0cd, #7c3aed); display:flex; align-items:center; justify-content:center; font-family:"Sora",sans-serif; font-weight:800; color:#0c0c1d; }
+  .thumb-liquid { background: radial-gradient(circle at 20% 30%, rgba(124,58,237,.9), transparent 55%), radial-gradient(circle at 75% 60%, rgba(76,215,246,.75), transparent 50%), radial-gradient(circle at 50% 90%, rgba(255,176,205,.5), transparent 45%), #0c0c1d; }
+  .thumb-glasskit { background-image: linear-gradient(135deg, rgba(76,215,246,.18) 25%, transparent 25%), linear-gradient(225deg, rgba(76,215,246,.18) 25%, transparent 25%), linear-gradient(45deg, rgba(124,58,237,.22) 25%, transparent 25%), linear-gradient(315deg, rgba(124,58,237,.22) 25%, #14142a 25%); background-position: 40px 0, 40px 0, 0 0, 0 0; background-size: 80px 80px; background-color: #0c0c1d; }
+  .thumb-nodefield { background: radial-gradient(circle, rgba(255,176,205,.35) 1.5px, transparent 1.5px), #0c0c1d; background-size: 22px 22px; }
+  .thumb-signal { background: repeating-linear-gradient(100deg, rgba(210,187,255,.16) 0px, rgba(210,187,255,.16) 2px, transparent 2px, transparent 14px), #0c0c1d; }
+  .meter-track { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); overflow: hidden; }
+  .meter-fill { background: linear-gradient(90deg, #7c3aed, #4cd7f6); height: 100%; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #4cd7f6; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    .cyan-pulse, .float-anim, .animate-bounce, .animate-ping, .animate-pulse { animation: none !important; }
+    html { scroll-behavior: auto !important; }
+  }
+  html { scroll-behavior: smooth; }
+</style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary/30">
+
+<!-- Ambient procedural background — pure shader, zero external image requests -->
+<div class="fixed inset-0 w-full h-full z-0 pointer-events-none opacity-40">
+  <canvas id="bg-shader" style="display:block;width:100%;height:100%"></canvas>
+</div>
+
+<!-- HEADER -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 bg-surface/60 backdrop-blur-md border-b border-white/10 shadow-[0_0_20px_rgba(210,187,255,0.1)]">
+  <a href="#home" class="font-headline-md text-headline-md font-bold text-primary tracking-tighter">ANUSH.WORLD</a>
+  <div class="flex items-center gap-5">
+    <a href="#status" class="hidden sm:flex text-primary hover:text-secondary transition-colors" aria-label="Status"><span class="material-symbols-outlined">sensors</span></a>
+    <a href="#connect" class="hidden sm:flex text-primary hover:text-secondary transition-colors" aria-label="Connect"><span class="material-symbols-outlined">terminal</span></a>
+    <button id="menu-toggle" class="lg:hidden text-primary" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span class="material-symbols-outlined">menu</span></button>
+  </div>
+</header>
+
+<nav id="mobile-menu" class="lg:hidden fixed top-24 left-4 right-4 z-40 glass-panel rounded-xl p-3 flex flex-col gap-1">
+  <a class="nav-link flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-primary font-label-mono transition-all" href="#home" data-section="home"><span class="material-symbols-outlined">space_dashboard</span><span>Home</span></a>
+  <a class="nav-link flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-primary font-label-mono transition-all" href="#projects" data-section="projects"><span class="material-symbols-outlined">rocket_launch</span><span>Projects</span></a>
+  <a class="nav-link flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-primary font-label-mono transition-all" href="#archive" data-section="archive"><span class="material-symbols-outlined">folder_open</span><span>Archive</span></a>
+  <a class="nav-link flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-primary font-label-mono transition-all" href="#status" data-section="status"><span class="material-symbols-outlined">query_stats</span><span>Status</span></a>
+  <a class="nav-link flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-primary font-label-mono transition-all" href="#connect" data-section="connect"><span class="material-symbols-outlined">alternate_email</span><span>Connect</span></a>
+</nav>
+
+<!-- SIDEBAR -->
+<aside class="hidden lg:flex fixed left-0 top-0 h-full w-64 bg-surface-container/40 backdrop-blur-lg border-r border-white/10 shadow-2xl z-30 flex-col py-base pt-24">
+  <div class="px-6 mb-10">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full avatar-monogram" aria-hidden="true">A</div>
+      <div><h3 class="font-headline-sm text-sm text-primary">ANUSH</h3><p class="font-label-mono text-[10px] text-outline">DIGITAL ARCHITECT</p></div>
+    </div>
+  </div>
+  <nav class="flex flex-col gap-1 flex-grow" aria-label="Primary">
+    <a class="side-link flex items-center gap-4 px-6 py-3 text-on-surface-variant/70 hover:bg-white/5 hover:text-primary font-label-mono transition-all duration-500" href="#home" data-section="home"><span class="material-symbols-outlined">space_dashboard</span><span>Home</span></a>
+    <a class="side-link flex items-center gap-4 px-6 py-3 text-on-surface-variant/70 hover:bg-white/5 hover:text-primary font-label-mono transition-all duration-500" href="#projects" data-section="projects"><span class="material-symbols-outlined">rocket_launch</span><span>Projects</span></a>
+    <a class="side-link flex items-center gap-4 px-6 py-3 text-on-surface-variant/70 hover:bg-white/5 hover:text-primary font-label-mono transition-all duration-500" href="#archive" data-section="archive"><span class="material-symbols-outlined">folder_open</span><span>Archive</span></a>
+    <a class="side-link flex items-center gap-4 px-6 py-3 text-on-surface-variant/70 hover:bg-white/5 hover:text-primary font-label-mono transition-all duration-500" href="#status" data-section="status"><span class="material-symbols-outlined">query_stats</span><span>Status</span></a>
+    <a class="side-link flex items-center gap-4 px-6 py-3 text-on-surface-variant/70 hover:bg-white/5 hover:text-primary font-label-mono transition-all duration-500" href="#connect" data-section="connect"><span class="material-symbols-outlined">alternate_email</span><span>Connect</span></a>
+  </nav>
+  <div class="p-6">
+    <a href="#connect" class="block text-center w-full py-3 bg-primary/10 border border-primary/30 text-primary font-label-mono text-xs rounded hover:bg-primary hover:text-surface transition-all duration-300">INITIATE CONTACT</a>
+  </div>
+</aside>
+
+<div class="relative z-20 lg:pl-64 flex flex-col min-h-screen pt-20">
+<main class="flex-grow">
+
+  <!-- HOME -->
+  <section id="home" class="relative min-h-[calc(100vh-5rem)] flex items-center justify-center px-6 overflow-hidden">
+    <div class="absolute top-[28%] left-[15%] w-3 h-3 bg-primary rounded-full blur-[2px] opacity-60 animate-ping" aria-hidden="true"></div>
+    <div class="absolute top-[68%] right-[12%] w-2 h-2 bg-secondary rounded-full blur-[1px] opacity-40 animate-ping" style="animation-delay:1.5s" aria-hidden="true"></div>
+    <div class="relative z-20 text-center max-w-4xl px-4">
+      <div class="inline-block px-4 py-1 mb-6 glass-panel rounded-full"><span class="font-label-mono text-xs text-primary tracking-widest uppercase">System online // build 2026.1</span></div>
+      <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg leading-tight mb-6 neon-text-magenta">ANUSH'S DIGITAL WORLD</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
+        Architecting the future at the intersection of <span class="text-secondary">design</span> and <span class="text-primary-fixed-dim">code</span>. This is a working lab notebook of what I'm building, shipping, and learning.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <a href="#projects" class="group relative px-10 py-4 glass-panel rounded-lg overflow-hidden cyan-pulse transition-all hover:scale-105 active:scale-95">
+          <div class="absolute inset-0 bg-secondary/5 group-hover:bg-secondary/20 transition-colors"></div>
+          <span class="relative font-headline-sm text-secondary tracking-widest text-sm md:text-base">VIEW PROJECTS</span>
+        </a>
+        <a class="font-label-mono text-sm text-outline hover:text-primary transition-colors flex items-center gap-2" href="#archive"><span class="material-symbols-outlined text-lg">explore</span>VIEW ARCHIVE</a>
+      </div>
+    </div>
+    <a href="#projects" class="absolute bottom-10 right-10 w-12 h-12 glass-panel rounded-full flex items-center justify-center text-primary animate-bounce z-20" aria-label="Scroll down"><span class="material-symbols-outlined">expand_more</span></a>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="relative z-20 py-24 px-6 lg:px-margin-desktop bg-surface-container-lowest/50">
+    <div class="max-w-container-max mx-auto">
+      <div class="flex justify-between items-end mb-12">
+        <div><h2 class="font-headline-md text-headline-md text-primary mb-2">The Terminal</h2><p class="font-body-md text-on-surface-variant">Active modules from the lab.</p></div>
+        <div class="font-label-mono text-sm text-secondary">FILTER: ALL_UNITS</div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+        <div class="md:col-span-2 glass-panel p-8 rounded-xl group hover:border-primary/40 transition-all duration-500">
+          <div class="h-64 mb-6 rounded-lg overflow-hidden relative thumb-liquid">
+            <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+            <div class="absolute bottom-4 left-4 flex gap-2">
+              <span class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-label-mono rounded-full border border-primary/30">WEBGL</span>
+              <span class="px-3 py-1 bg-secondary/20 text-secondary text-[10px] font-label-mono rounded-full border border-secondary/30">EXPERIMENT</span>
+            </div>
+          </div>
+          <h3 class="font-headline-sm text-primary mb-2">Liquid Architecture</h3>
+          <p class="font-body-md text-on-surface-variant">A real-time fluid-dynamics shader built directly in WebGL — the same technique powers this page's ambient background.</p>
+          <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center font-label-mono text-xs">
+            <span class="text-outline">STATUS: ACTIVE</span>
+            <!-- EDIT: link to your real repo -->
+            <a href="https://github.com/YOUR-GITHUB-HANDLE/liquid-architecture" target="_blank" rel="noopener" class="text-primary hover:underline">SOURCE →</a>
+          </div>
+        </div>
+        <div class="glass-panel p-8 rounded-xl flex flex-col group hover:border-secondary/40 transition-all duration-500">
+          <div class="h-48 mb-6 rounded-lg overflow-hidden thumb-glasskit"></div>
+          <h3 class="font-headline-sm text-secondary mb-2">Glass Kit</h3>
+          <p class="font-body-md text-on-surface-variant flex-grow">A small, reusable component system for glassmorphic interfaces — this page is built on it.</p>
+          <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center font-label-mono text-xs">
+            <span class="text-outline">RELEASED: 2026.05</span>
+            <a href="https://github.com/YOUR-GITHUB-HANDLE/glass-kit" target="_blank" rel="noopener" class="text-primary hover:underline">SOURCE →</a>
+          </div>
+        </div>
+        <div class="glass-panel p-8 rounded-xl group hover:border-tertiary/40 transition-all duration-500">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded bg-tertiary/10 flex items-center justify-center text-tertiary"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">rocket_launch</span></div>
+            <h3 class="font-headline-sm text-tertiary">Project Vault</h3>
+          </div>
+          <ul class="space-y-4 font-label-mono text-sm text-on-surface-variant">
+            <li class="flex justify-between border-b border-white/5 pb-2"><span>Neural_Link.v2</span><span class="text-outline">ACTIVE</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-2"><span>Cyber_Synth</span><span class="text-outline">ARCHIVED</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-2"><span>Proto_Mesh</span><span class="text-secondary">BETA</span></li>
+          </ul>
+        </div>
+        <div class="md:col-span-2 glass-panel p-8 rounded-xl flex items-center justify-between group overflow-hidden">
+          <div class="relative z-10">
+            <h3 class="font-headline-sm text-primary mb-2">Want to collaborate?</h3>
+            <p class="font-body-md text-on-surface-variant max-w-md">Currently taking on a small number of design + engineering collaborations.</p>
+            <a href="#connect" class="inline-block mt-6 px-6 py-2 bg-white/5 border border-white/10 rounded font-label-mono text-xs hover:bg-white/10 transition-all">INITIATE_HANDSHAKE</a>
+          </div>
+          <div class="hidden sm:block absolute right-[-10%] top-[-10%] opacity-20 group-hover:rotate-12 transition-transform duration-1000" aria-hidden="true"><span class="material-symbols-outlined text-[200px]" style="font-variation-settings:'wght' 100;">hub</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHIVE -->
+  <section id="archive" class="px-6 lg:px-margin-desktop py-24">
+    <div class="max-w-container-max mx-auto">
+      <div class="mb-16"><h2 class="font-headline-md text-headline-md text-primary mb-2">Archive</h2><p class="font-body-md text-on-surface-variant max-w-2xl">Finished, retired, or superseded work — kept instead of deleted.</p></div>
+      <ol class="relative border-l border-white/10 ml-3">
+        <li class="relative mb-14 ml-8">
+          <span class="absolute -left-[9px] w-4 h-4 rounded-full bg-tertiary border-4 border-surface-container-lowest"></span>
+          <div class="glass-panel rounded-xl p-6">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2"><h3 class="font-headline-sm text-tertiary">Cyber_Synth</h3><span class="font-label-mono text-[10px] px-3 py-1 rounded-full border border-white/10 text-outline">ARCHIVED · 2025</span></div>
+            <p class="font-body-md text-on-surface-variant"><!-- EDIT -->A generative-visuals experiment on the Web Audio API. Retired once the ideas were folded into a more maintainable form.</p>
+          </div>
+        </li>
+        <li class="relative mb-14 ml-8">
+          <span class="absolute -left-[9px] w-4 h-4 rounded-full bg-secondary border-4 border-surface-container-lowest"></span>
+          <div class="glass-panel rounded-xl p-6">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2"><h3 class="font-headline-sm text-secondary">Proto_Mesh</h3><span class="font-label-mono text-[10px] px-3 py-1 rounded-full border border-white/10 text-outline">SUPERSEDED · 2025</span></div>
+            <p class="font-body-md text-on-surface-variant"><!-- EDIT -->An early component mesh for glass-style interfaces. Its lessons became the starting point for Glass Kit.</p>
+          </div>
+        </li>
+        <li class="relative ml-8">
+          <span class="absolute -left-[9px] w-4 h-4 rounded-full bg-primary border-4 border-surface-container-lowest"></span>
+          <div class="glass-panel rounded-xl p-6">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2"><h3 class="font-headline-sm text-primary">ANUSH.WORLD v1</h3><span class="font-label-mono text-[10px] px-3 py-1 rounded-full border border-white/10 text-outline">RETIRED · 2024</span></div>
+            <p class="font-body-md text-on-surface-variant"><!-- EDIT -->The first version of this site — a static mockup with no working navigation. Rebuilt into the page you're looking at now.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- STATUS -->
+  <section id="status" class="px-6 lg:px-margin-desktop py-24 bg-surface-container-lowest/50">
+    <div class="max-w-container-max mx-auto">
+      <div class="mb-12"><h2 class="font-headline-md text-headline-md text-primary mb-2">Status</h2><p class="font-body-md text-on-surface-variant max-w-2xl">A "now" page, kept honest. Last updated <time datetime="2026-07">July 2026</time>.</p></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-gutter">
+        <div class="glass-panel p-8 rounded-xl">
+          <div class="flex items-center gap-3 mb-4"><span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse" aria-hidden="true"></span><h3 class="font-headline-sm text-secondary">Availability</h3></div>
+          <p class="font-body-md text-on-surface-variant"><!-- EDIT -->Open to short-term collaborations and freelance builds.</p>
+        </div>
+        <div class="glass-panel p-8 rounded-xl md:col-span-2">
+          <h3 class="font-headline-sm text-primary mb-4">Currently</h3>
+          <ul class="space-y-3 font-body-md text-on-surface-variant">
+            <li class="flex gap-3"><span class="text-primary">▸</span><!-- EDIT -->Rebuilding this site as a proper single-file GitHub Pages project.</li>
+            <li class="flex gap-3"><span class="text-primary">▸</span><!-- EDIT -->Iterating on Signal, a lightweight streaming-data visualisation library.</li>
+            <li class="flex gap-3"><span class="text-primary">▸</span><!-- EDIT -->Reading up on WebGL performance patterns for low-powered devices.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="glass-panel p-8 rounded-xl">
+        <h3 class="font-headline-sm text-tertiary mb-6">Stack</h3>
+        <div class="space-y-5">
+          <div><div class="flex justify-between font-label-mono text-xs mb-2"><span class="text-on-surface-variant">JavaScript / TypeScript</span><span class="text-outline">Daily driver</span></div><div class="meter-track h-2 rounded-full"><div class="meter-fill rounded-full" style="width:90%"></div></div></div>
+          <div><div class="flex justify-between font-label-mono text-xs mb-2"><span class="text-on-surface-variant">WebGL / Shaders</span><span class="text-outline">Comfortable</span></div><div class="meter-track h-2 rounded-full"><div class="meter-fill rounded-full" style="width:65%"></div></div></div>
+          <div><div class="flex justify-between font-label-mono text-xs mb-2"><span class="text-on-surface-variant">Design systems</span><span class="text-outline">Comfortable</span></div><div class="meter-track h-2 rounded-full"><div class="meter-fill rounded-full" style="width:70%"></div></div></div>
+          <div><div class="flex justify-between font-label-mono text-xs mb-2"><span class="text-on-surface-variant">Backend / infra</span><span class="text-outline">Still learning</span></div><div class="meter-track h-2 rounded-full"><div class="meter-fill rounded-full" style="width:35%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section id="connect" class="px-6 lg:px-margin-desktop py-24">
+    <div class="max-w-container-max mx-auto">
+      <div class="max-w-2xl mb-16">
+        <h2 class="font-headline-md text-headline-md text-primary mb-2">Connect</h2>
+        <p class="font-body-md text-on-surface-variant">No contact form here — GitHub Pages can't run one without a third-party service, and a form that quietly goes nowhere is worse than none. Email is the fastest way to reach me.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+        <div class="glass-panel p-8 rounded-xl">
+          <h3 class="font-headline-sm text-secondary mb-4">Email</h3>
+          <!-- EDIT: your real email address, both places -->
+          <p class="font-label-mono text-lg text-on-surface mb-6">hello@anush.world</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="mailto:hello@anush.world" class="px-6 py-3 bg-secondary/10 border border-secondary/30 text-secondary rounded font-label-mono text-xs hover:bg-secondary hover:text-surface transition-all duration-300">OPEN MAIL APP</a>
+            <button data-copy="hello@anush.world" class="px-6 py-3 bg-white/5 border border-white/10 rounded font-label-mono text-xs hover:bg-white/10 transition-all duration-300">COPY ADDRESS</button>
+          </div>
+        </div>
+        <div class="glass-panel p-8 rounded-xl">
+          <h3 class="font-headline-sm text-primary mb-4">Elsewhere</h3>
+          <ul class="space-y-4 font-label-mono text-sm">
+            <!-- EDIT: your real profile links -->
+            <li><a href="https://github.com/YOUR-GITHUB-HANDLE" target="_blank" rel="noopener" class="flex items-center justify-between border-b border-white/5 pb-3 text-on-surface-variant hover:text-primary transition-colors"><span>GitHub</span><span class="material-symbols-outlined text-base">arrow_outward</span></a></li>
+            <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN-HANDLE" target="_blank" rel="noopener" class="flex items-center justify-between border-b border-white/5 pb-3 text-on-surface-variant hover:text-primary transition-colors"><span>LinkedIn</span><span class="material-symbols-outlined text-base">arrow_outward</span></a></li>
+            <li><a href="https://x.com/YOUR-HANDLE" target="_blank" rel="noopener" class="flex items-center justify-between pb-1 text-on-surface-variant hover:text-primary transition-colors"><span>X / Twitter</span><span class="material-symbols-outlined text-base">arrow_outward</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="w-full py-8 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-lowest/80 backdrop-blur-sm border-t border-white/5 opacity-80 hover:opacity-100 transition-opacity">
+  <div class="font-label-mono text-label-mono text-secondary">© <span id="year">2026</span> ANUSH.WORLD</div>
+  <div class="flex items-center gap-8">
+    <!-- EDIT -->
+    <a class="font-label-mono text-label-mono text-outline hover:text-secondary transition-colors" href="https://github.com/YOUR-GITHUB-HANDLE" target="_blank" rel="noopener">GitHub</a>
+    <a class="font-label-mono text-label-mono text-outline hover:text-secondary transition-colors" href="https://www.linkedin.com/in/YOUR-LINKEDIN-HANDLE" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="font-label-mono text-label-mono text-outline hover:text-secondary transition-colors" href="#connect">Connect</a>
+  </div>
+  <div class="flex gap-4" aria-hidden="true">
+    <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+    <div class="w-2 h-2 rounded-full bg-secondary animate-pulse" style="animation-delay:0.5s"></div>
+    <div class="w-2 h-2 rounded-full bg-tertiary animate-pulse" style="animation-delay:1s"></div>
+  </div>
+</footer>
+</div>
+
+<script>
+// Ambient WebGL background — pure procedural shader, nothing to ever break.
+(function () {
+  const canvas = document.getElementById("bg-shader");
+  if (!canvas) return;
+  function syncSize() {
+    const w = canvas.clientWidth || 1280, h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+  }
+  if (typeof ResizeObserver !== "undefined") new ResizeObserver(syncSize).observe(canvas);
+  syncSize();
+  const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+  if (!gl) return;
+  const vs = `attribute vec2 a_position; varying vec2 v_texCoord; void main() { v_texCoord = a_position * 0.5 + 0.5; gl_Position = vec4(a_position, 0.0, 1.0); }`;
+  const fs = `precision highp float; varying vec2 v_texCoord; uniform float u_time;
+  void main() {
+    vec2 uv = v_texCoord;
+    vec3 color1 = vec3(0.04, 0.04, 0.1);
+    vec3 color2 = vec3(0.1, 0.05, 0.2);
+    vec3 accent = vec3(0.3, 0.1, 0.6);
+    float wave = sin(uv.x * 3.0 + u_time * 0.5) * cos(uv.y * 2.0 + u_time * 0.3);
+    vec3 base = mix(color1, color2, uv.y + wave * 0.2);
+    base = mix(base, accent, pow(max(0.0, wave), 3.0) * 0.5);
+    gl_FragColor = vec4(base, 1.0);
+  }`;
+  function compile(type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, compile(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, "a_position");
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, "u_time");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function render(t) {
+    if (typeof ResizeObserver === "undefined") syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    if (!reduceMotion) requestAnimationFrame(render);
+  }
+  render(0);
+})();
+
+// Mobile menu toggle
+(function () {
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      const isOpen = menu.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => { menu.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); });
+    });
+  }
+})();
+
+// Active nav state on scroll
+(function () {
+  const sections = document.querySelectorAll("main section[id]");
+  const navLinks = document.querySelectorAll(".nav-link, .side-link");
+  if (!sections.length || !("IntersectionObserver" in window)) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navLinks.forEach((link) => link.classList.toggle("active", link.dataset.section === entry.target.id));
+      }
+    });
+  }, { rootMargin: "-40% 0px -55% 0px" });
+  sections.forEach((s) => observer.observe(s));
+})();
+
+// Scroll-reveal for cards/sections
+(function () {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion || !("IntersectionObserver" in window)) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("opacity-100", "translate-y-0");
+        entry.target.classList.remove("opacity-0", "translate-y-10");
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll(".glass-panel").forEach((el) => {
+    el.classList.add("transition-all", "duration-1000", "opacity-0", "translate-y-10");
+    observer.observe(el);
+  });
+})();
+
+// Footer year + copy-to-clipboard
+(function () {
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    const defaultLabel = btn.textContent;
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy);
+        btn.textContent = "COPIED ✓";
+        setTimeout(() => (btn.textContent = defaultLabel), 1800);
+      } catch (err) { console.warn("Clipboard copy failed:", err); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
